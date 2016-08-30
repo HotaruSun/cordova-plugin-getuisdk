@@ -205,11 +205,14 @@
 }
 
 - (void)GetMyDeviceToken:(CDVInvokedUrlCommand*)command {
-    [self.commandDelegate runInBackground:^{
-        NSString *deviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-        deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
-        [self.commandDelegate sendPluginResult:deviceToken callbackId:command.callbackId];
-    }];
+    // [self.commandDelegate runInBackground:^{
+    //     NSString *deviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    //     deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    //     [self.commandDelegate sendPluginResult:deviceToken callbackId:command.callbackId];
+    // }];
+    NSString *deviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [self.commandDelegate sendPluginResult:deviceToken callbackId:command.callbackId];
 }
 
 - (void) GeTuiSdkDidReceivePayloadData:(NSData *)payloadData andTaskId:(NSString *)taskId
