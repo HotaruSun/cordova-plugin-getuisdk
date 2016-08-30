@@ -128,6 +128,11 @@ var GeTuiSdk = {
     setGeTuiSdkDidSetPushModeCallback: function(callback) {
         argscheck.checkArgs('f', 'GeTuiSdk.setGeTuiSdkDidSetPushModeCallback', arguments);
         exec(callback, null, 'GeTuiSdk', 'setGeTuiSdkDidSetPushModeCallback', []);
+    },
+
+    getIosDeviceTokenCallback: function(callback){
+    	argscheck.checkArgs('f', 'GeTuiSdk.GetMyDeviceToken', arguments);
+        exec(callback, null, 'GeTuiSdk', 'setMyDeviceTokenCallback', []);
     }
 
 };

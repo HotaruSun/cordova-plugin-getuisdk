@@ -15,6 +15,7 @@
     NSString *_occurErrorCallbackId;
     NSString *_notifySdkStateCallbackId;
     NSString *_setPushModeCallbackId;
+    // NSString *_deviceTokenCallbackId;
 }
 
 @end
@@ -184,11 +185,18 @@
     _setPushModeCallbackId = command.callbackId;
 }
 
+- (void)setMyDeviceTokenCallback:(CDVInvokedUrlCommand *)command {
+    // NSString *deviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    // deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    // _deviceTokenCallbackId = command.callbackId;
+    exit(0);
+}
+
 
 //protocol GexinSdkDelegate
 - (void)GeTuiSdkDidRegisterClient:(NSString *)clientId {
     if (!_registerClientCallbackId) {
-        return;
+       return;
     }
 
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:clientId];
@@ -196,6 +204,13 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:_registerClientCallbackId];
 }
 
+- (void)GetMyDeviceToken:(CDVInvokedUrlCommand*)command {
+    [self.commandDelegate runInBackground:^{
+        NSString *deviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+        deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+        [self.commandDelegate sendPluginResult:deviceToken callbackId:command.callbackId];
+    }];
+}
 
 - (void) GeTuiSdkDidReceivePayloadData:(NSData *)payloadData andTaskId:(NSString *)taskId
                               andMsgId:(NSString *)msgId andOffLine:(BOOL)offLine fromGtAppId:(NSString *)appId {
