@@ -15,7 +15,7 @@
     NSString *_occurErrorCallbackId;
     NSString *_notifySdkStateCallbackId;
     NSString *_setPushModeCallbackId;
-    // NSString *_deviceTokenCallbackId;
+    NSString *_deviceTokenCallbackId;
 }
 
 @end
@@ -188,8 +188,8 @@
 - (void)setMyDeviceTokenCallback:(CDVInvokedUrlCommand *)command {
     // NSString *deviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     // deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
-    // _deviceTokenCallbackId = command.callbackId;
-    exit(0);
+    _deviceTokenCallbackId = command.callbackId;
+    // exit(0);
 }
 
 
@@ -212,7 +212,7 @@
     // }];
     NSString *deviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [self.commandDelegate sendPluginResult:deviceToken callbackId:command.callbackId];
+    [self.commandDelegate sendPluginResult:deviceToken callbackId:_deviceTokenCallbackId];
 }
 
 - (void) GeTuiSdkDidReceivePayloadData:(NSData *)payloadData andTaskId:(NSString *)taskId
