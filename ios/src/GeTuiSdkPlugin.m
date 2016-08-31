@@ -185,14 +185,14 @@
     _setPushModeCallbackId = command.callbackId;
 }
 
-- (void)deviceToken:(CDVInvokedUrlCommand *)command {
+- (void)deviceToken:(NSData *)deviceToken {
     NSString *callbackId = command.callbackId;
 
-    NSString *deviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-    deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"\n>>>[DeviceToken Success]:%@\n\n", deviceToken);
+    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"\n>>>[DeviceToken Success]:%@\n\n", token);
 
-    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:deviceToken];
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:token];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
 }
 

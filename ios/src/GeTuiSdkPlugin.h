@@ -40,7 +40,7 @@
 - (void)setGeTuiSdkDidOccurErrorCallback:(CDVInvokedUrlCommand *)command;
 - (void)setGeTuiSDkDidNotifySdkStateCallback:(CDVInvokedUrlCommand *)command;
 - (void)setGeTuiSdkDidSetPushModeCallback:(CDVInvokedUrlCommand *)command;
-- (void)deviceToken:(CDVInvokedUrlCommand *)command;
+- (void)deviceToken:(NSData *)deviceToken;
 - (void)setMyDeviceTokenCallback:(CDVInvokedUrlCommand *)command;
 
 //protocol GexinSdkDelegate
