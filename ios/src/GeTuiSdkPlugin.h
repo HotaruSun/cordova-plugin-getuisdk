@@ -40,12 +40,12 @@
 - (void)setGeTuiSdkDidOccurErrorCallback:(CDVInvokedUrlCommand *)command;
 - (void)setGeTuiSDkDidNotifySdkStateCallback:(CDVInvokedUrlCommand *)command;
 - (void)setGeTuiSdkDidSetPushModeCallback:(CDVInvokedUrlCommand *)command;
-- (void)deviceToken:(NSData *)deviceToken;
+- (void)myDeviceToken:(NSData *)deviceToken;
 - (void)setMyDeviceTokenCallback:(CDVInvokedUrlCommand *)command;
 
 //protocol GexinSdkDelegate
 - (void)GeTuiSdkDidRegisterClient:(NSString *)clientId;
-- (void)GetMyDeviceToken:(NSString *)deviceToken;
+- (void)GetMyDeviceToken:(NSString *)myDeviceToken;
 
 //- (void)GeTuiSdkDidReceivePayload:(NSString *)payloadId andTaskId:(NSString *)taskId
 //                     andMessageId:(NSString *)aMsgId andOffLine:(BOOL)offLine fromApplication:(NSString *)appId;（已弃用）

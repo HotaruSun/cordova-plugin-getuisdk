@@ -185,7 +185,7 @@
     _setPushModeCallbackId = command.callbackId;
 }
 
-- (void)deviceToken:(NSData *)deviceToken {
+- (void)myDeviceToken:(NSData *)deviceToken {
     NSString *callbackId = command.callbackId;
 
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
@@ -215,7 +215,7 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:_registerClientCallbackId];
 }
 
-- (void)GetMyDeviceToken:(NSString *)deviceToken {
+- (void)GetMyDeviceToken:(NSString *)myDeviceToken {
     // [self.commandDelegate runInBackground:^{
     //     NSString *deviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     //     deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
