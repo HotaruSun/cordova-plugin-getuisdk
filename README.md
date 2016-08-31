@@ -1,4 +1,4 @@
-# cordova-plugin-getuisdk
+# cordova-plugin-getuisdk(添加了获取devicetoken的方法)
 ##安装cordova环境
 * 安装cordova 
 ```
