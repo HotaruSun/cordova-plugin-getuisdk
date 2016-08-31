@@ -131,7 +131,7 @@ var GeTuiSdk = {
     },
 
     getIosDeviceTokenCallback: function(callback){
-    	argscheck.checkArgs('f', 'GeTuiSdk.GetMyDeviceToken', arguments);
+    	argscheck.checkArgs('f', 'GeTuiSdk.setMyDeviceTokenCallback', arguments);
         exec(callback, null, 'GeTuiSdk', 'setMyDeviceTokenCallback', []);
     }
 
