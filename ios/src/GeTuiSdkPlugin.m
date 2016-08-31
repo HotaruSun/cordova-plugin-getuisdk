@@ -185,6 +185,17 @@
     _setPushModeCallbackId = command.callbackId;
 }
 
+- (void)deviceToken:(CDVInvokedUrlCommand *)command {
+    NSString *callbackId = command.callbackId;
+
+    NSString *deviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"\n>>>[DeviceToken Success]:%@\n\n", deviceToken);
+
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:deviceToken];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
+}
+
 - (void)setMyDeviceTokenCallback:(CDVInvokedUrlCommand *)command {
     // NSString *deviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     // deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -204,15 +215,15 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:_registerClientCallbackId];
 }
 
-- (void)GetMyDeviceToken:(NSData *)deviceToken {
+- (void)GetMyDeviceToken:(NSString *)deviceToken {
     // [self.commandDelegate runInBackground:^{
     //     NSString *deviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     //     deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
     //     [self.commandDelegate sendPluginResult:deviceToken callbackId:command.callbackId];
     // }];
-    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"\n>>>[DeviceToken Success]:%@\n\n", token);
+    if (!_deviceTokenCallbackId) {
+       return;
+    }
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:token];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:_deviceTokenCallbackId];
 }
