@@ -213,7 +213,8 @@
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"\n>>>[DeviceToken Success]:%@\n\n", token);
-    [self.commandDelegate sendPluginResult:token callbackId:_deviceTokenCallbackId];
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:token];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:_deviceTokenCallbackId];
 }
 
 - (void) GeTuiSdkDidReceivePayloadData:(NSData *)payloadData andTaskId:(NSString *)taskId
